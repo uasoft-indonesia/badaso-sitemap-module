@@ -104,7 +104,8 @@ class WebAccessHandle
 
         $new_generate_page_array_xml_format = [];
         foreach ($generate_page_url as $key => $page_url) {
-            $loc_url = url(join('/', $page_url['path']));
+            $path = join('/', $page_url['path']);
+            $loc_url = url($path);
             $new_generate_page_array_xml_format[$loc_url] = [
                 'loc' => $loc_url,
                 'lastmod' => $page_url['lastmod'],

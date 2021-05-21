@@ -31,32 +31,16 @@ class SitemapController extends Controller
 
     public function prefixGet($prefix)
     {
-        switch ($prefix) {
-            case 'badaso-blog':
-                $web_access = new WebAccessHandle($prefix, null);
+        $web_access = new WebAccessHandle($prefix, null);
 
-                return $this->xmlSuccessResponse($web_access->generateViewXML());
-                break;
-
-            default:
-                return null;
-                break;
-        }
+        return $this->xmlSuccessResponse($web_access->generateViewXML());
     }
 
     public function prefixPageGet($prefix, $page)
     {
-        switch ($prefix) {
-            case 'badaso-blog':
-                $web_access = new WebAccessHandle($prefix, $page);
+        $web_access = new WebAccessHandle($prefix, $page);
 
-                return $this->xmlSuccessResponse($web_access->generateViewXML());
-                break;
-
-            default:
-                return null;
-                break;
-        }
+        return $this->xmlSuccessResponse($web_access->generateViewXML());
     }
 
     private function xmlSuccessResponse($xml)
