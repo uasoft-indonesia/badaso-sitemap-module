@@ -33,7 +33,20 @@ class WebAccessHandle
                 $table_name = config('badaso-sitemap.sitemap')[$this->prefix]['table'];
                 $field_name = $sub_url;
 
-                $available_list = DB::table($table_name)->select($field_name, 'created_at', 'updated_at');
+                $available_list = DB::table($table_name);
+
+                $explode_sub_url = explode(',', $sub_url);
+                if (count($explode_sub_url) == 3) {
+                    $field_name_foreign = trim($explode_sub_url[0]);
+                    $field_name_references = trim($explode_sub_url[1]);
+                    [$table_references] = explode('.', $field_name_references);
+                    $field_name = trim($explode_sub_url[2]);
+
+                    $available_list = $available_list->join($table_references, $field_name_foreign, $field_name_references)->select($field_name, "{$table_name}.created_at", "{$table_name}.updated_at");
+                } else {
+                    $available_list = $available_list->select($field_name, 'created_at', 'updated_at');
+                }
+
                 $count_available_list = $available_list->count();
                 $max_pages = intval(config('badaso-sitemap.max_content_paginate'));
                 if ($max_pages == null || $max_pages == 0) {
@@ -107,6 +120,9 @@ class WebAccessHandle
                     $row = (array) $row;
                     foreach ($this->attribute_sub_url as $sub_index_path => $sub_explode_path_url) {
                         if (is_array($sub_explode_path_url)) {
+                            if (!array_key_exists($field_name, $row)) {
+                                $field_name = explode('.', $field_name)[1];
+                            }
                             $generate_page_url[$idx_model]['path'][$index_path] = $row[$field_name];
                             $generate_page_url[$idx_model]['lastmod'] = \Carbon\Carbon::parse($row['updated_at'])->toISOString();
                         } else {
