@@ -39,12 +39,25 @@ class BadasoSitemapSetup extends Command
     public function handle()
     {
         try {
-            $this->force = $this->option('generateSeeder');
-            if ($this->force == null) {
+            $this->force = $this->option('force');
+            if ($this->force == null || $this->force == 'true') {
                 $this->force = true;
+            } else {
+                $this->force = false;
             }
+
+            $this->publishConfig();
         } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
+    }
+
+    public function publishConfig()
+    {
+        $params = [
+            '--tag' => 'badaso-sitemap-config',
+            '--force' => $this->force,
+        ];
+        $this->call('vendor:publish', $params);
     }
 }

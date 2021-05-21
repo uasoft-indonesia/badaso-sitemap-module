@@ -6,7 +6,8 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Uasoft\Badaso\Middleware\ApiRequest;
-use Uasoft\Badaso\Module\Content\BadasoSitemapModule;
+use Uasoft\Badaso\Module\Sitemap\BadasoSitemapModule;
+use Uasoft\Badaso\Module\Sitemap\Commands\BadasoSitemapSetup;
 use Uasoft\Badaso\Module\Sitemap\Facades\BadasoSitemapModule as FacadesBadasoSitemapModule;
 use Uasoft\Badaso\Module\Sitemap\Middleware\CaptureRequestMiddleware;
 
@@ -30,6 +31,10 @@ class BadasoModuleSitemapServiceProvider extends ServiceProvider
         });
 
         $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
+
+        $this->publishes([
+            __DIR__.'/../Config/badaso-sitemap.php' => config_path('badaso-sitemap.php'),
+        ], 'badaso-sitemap-config');
     }
 
     /**
@@ -47,6 +52,6 @@ class BadasoModuleSitemapServiceProvider extends ServiceProvider
      */
     private function registerConsoleCommands()
     {
-        // $this->commands(BadasoContentSetup::class);
+        $this->commands(BadasoSitemapSetup::class);
     }
 }
