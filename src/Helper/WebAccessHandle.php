@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\DB;
 
 class WebAccessHandle
 {
-    public static $max_content = 500;
     private $web_access;
     private $page;
     private $prefix;
@@ -14,7 +13,11 @@ class WebAccessHandle
 
     public function __construct($prefix_sitemap, $page)
     {
-        $this->web_access = config('badaso-sitemap.sitemap')[$prefix_sitemap]['web-access']['url'];
+        try {
+            $this->web_access = config('badaso-sitemap.sitemap')[$prefix_sitemap]['web-access']['url'];
+        } catch (\Exception $e) {
+            abort(404);
+        }
         $this->page = $page;
         $this->prefix = $prefix_sitemap;
         $this->explodePathUrl();
@@ -32,7 +35,10 @@ class WebAccessHandle
 
                 $available_list = DB::table($table_name)->select($field_name, 'created_at', 'updated_at');
                 $count_available_list = $available_list->count();
-                $max_pages = self::$max_content;
+                $max_pages = intval(config('badaso-sitemap.max_content_paginate'));
+                if ($max_pages == null || $max_pages == 0) {
+                    $max_pages = $count_available_list;
+                }
                 $num_pages = intval(ceil($count_available_list / $max_pages));
 
                 $pages[0] = [
@@ -65,10 +71,19 @@ class WebAccessHandle
 
     public function generateViewXML()
     {
-        if (isset($this->page)) {
-            return $this->generatePageUrl();
-        } else {
-            return $this->generatePageGroup();
+        foreach ($this->attribute_sub_url as $index => $path_url) {
+            if (is_array($path_url)) {
+                if ($path_url['num_pages'] == 1) {
+                    return $this->generatePageUrl();
+                }
+
+                if (isset($this->page)) {
+                    return $this->generatePageUrl();
+                } else {
+                    return $this->generatePageGroup();
+                }
+                break;
+            }
         }
     }
 
@@ -118,12 +133,18 @@ class WebAccessHandle
     public function generatePageGroup()
     {
         $generate_page_group = [];
-        foreach ($this->attribute_sub_url[1]['pages'] as $index => $explode) {
-            $page = $index + 1;
-            $loc = route('badaso.module.sitemap.prefix.page.get', ['prefix' => $this->prefix, 'page' => $page]);
-            $generate_page_group[$loc] = [
-                'loc' => $loc,
-            ];
+        foreach ($this->attribute_sub_url as $index => $path_url) {
+            if (is_array($path_url)) {
+                foreach ($path_url['pages'] as $index => $explode) {
+                    $page = $index + 1;
+                    $loc = route('badaso.module.sitemap.prefix.page.get', ['prefix' => $this->prefix, 'page' => $page]);
+                    $generate_page_group[$loc] = [
+                        'loc' => $loc,
+                    ];
+                }
+
+                break;
+            }
         }
 
         return SitemapXMLFormat::defaultFormatSitemapIndexXML($generate_page_group);
