@@ -20,4 +20,16 @@ return [
         //     ],
         // ],
     ],
+    'custom_sitemap' => [
+        // root
+        // 'root' => [
+            // urls
+            // '/' => [
+            //     'lastmod' => Carbon\Carbon::now()->toIsoString(),
+            // ],
+            // '/other' => [
+            //     'lastmod' => Carbon\Carbon::now()->toIsoString(),
+            // ],
+        // ],
+    ],
 ];

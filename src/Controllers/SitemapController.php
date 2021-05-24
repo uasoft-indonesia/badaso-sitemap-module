@@ -26,14 +26,42 @@ class SitemapController extends Controller
             ];
         }
 
+        $custom_sitemap = config('badaso-sitemap.custom_sitemap');
+        foreach ($custom_sitemap as $prefix => $value) {
+            $route_access = route('badaso.module.sitemap.prefix.get', ['prefix' => $prefix]);
+            $array_response[$route_access] = [
+                'loc' => $route_access,
+            ];
+        }
+
         return $this->xmlSuccessResponse(SitemapXMLFormat::defaultFormatSitemapIndexXML($array_response));
     }
 
     public function prefixGet($prefix)
     {
-        $web_access = new WebAccessHandle($prefix, null);
+        $sitemap = config('badaso-sitemap.sitemap');
+        $sitemap_keys = array_keys($sitemap);
 
-        return $this->xmlSuccessResponse($web_access->generateViewXML());
+        $custom_sitemap = config('badaso-sitemap.custom_sitemap');
+        $custom_sitemap_keys = array_keys($custom_sitemap);
+
+        if (in_array($prefix, $sitemap_keys)) {
+            $web_access = new WebAccessHandle($prefix, null);
+
+            return $this->xmlSuccessResponse($web_access->generateViewXML());
+        } elseif (in_array($prefix, $custom_sitemap_keys)) {
+            $custom_sitemap_value = $custom_sitemap[$prefix];
+
+            foreach ($custom_sitemap_value as $loc => $value) {
+                $custom_sitemap_value[$loc]['loc'] = url($loc);
+
+                $custom_sitemap_value[$loc] = array_reverse($custom_sitemap_value[$loc]);
+            }
+
+            return $this->xmlSuccessResponse(SitemapXMLFormat::defaultFormatSitemapURLSetXML($custom_sitemap_value));
+        } else {
+            abort(404);
+        }
     }
 
     public function prefixPageGet($prefix, $page)

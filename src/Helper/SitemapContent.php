@@ -9,14 +9,22 @@ class SitemapContent
     private $path_file;
     public $xml_sitemap_content;
     public $sitemaps;
+    public $is_sitemap_group;
+    private $directory;
 
-    public function __construct()
+    public function __construct($directory, $is_sitemap_group)
     {
+        $this->directory = $directory;
+        $this->is_sitemap_group = $is_sitemap_group;
     }
 
     public function defaultFormatSitemapXML(): self
     {
-        $this->xml_sitemap_content = SitemapXMLFormat::defaultFormatSitemapXML($this->sitemaps);
+        if ($this->is_sitemap_group) {
+            $this->xml_sitemap_content = SitemapXMLFormat::defaultFormatSitemapIndexXML($this->sitemaps);
+        } else {
+            $this->xml_sitemap_content = SitemapXMLFormat::defaultFormatSitemapURLSetXML($this->sitemaps);
+        }
 
         return $this;
     }
@@ -26,13 +34,9 @@ class SitemapContent
         return $this->defaultFormatSitemapXML()->xml_sitemap_content;
     }
 
-    public function add($loc): self
+    public function add($loc, $properties = []): self
     {
-        $lastmod = date('c');
-        $this->sitemaps[$loc] = [
-            'loc' => $loc,
-            'lastmod' => $lastmod,
-        ];
+        $this->sitemaps[$loc] = $properties;
 
         return $this;
     }
@@ -55,7 +59,7 @@ class SitemapContent
 
     public function loadContentSitemapJSONFormat($storage_sitemap_path)
     {
-        $directory_name = 'sitemap';
+        $directory_name = $this->directory;
         File::isDirectory(storage_path($directory_name)) or File::makeDirectory(storage_path($directory_name), 0777, true, true);
         $this->path_file = storage_path("{$directory_name}/{$storage_sitemap_path}");
 
@@ -70,9 +74,9 @@ class SitemapContent
         return $this;
     }
 
-    public static function load($storage_sitemap_path)
+    public static function load($directory = 'sitemap', $storage_sitemap_path, $is_sitemap_group = false)
     {
-        $sitemap_XML = new self();
+        $sitemap_XML = new self($directory, $is_sitemap_group);
         $sitemap_XML = $sitemap_XML->loadContentSitemapJSONFormat($storage_sitemap_path);
 
         return $sitemap_XML;
