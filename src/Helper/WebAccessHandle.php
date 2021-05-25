@@ -120,7 +120,7 @@ class WebAccessHandle
                     $row = (array) $row;
                     foreach ($this->attribute_sub_url as $sub_index_path => $sub_explode_path_url) {
                         if (is_array($sub_explode_path_url)) {
-                            if (!array_key_exists($field_name, $row)) {
+                            if (! array_key_exists($field_name, $row)) {
                                 $field_name = explode('.', $field_name)[1];
                             }
                             $generate_page_url[$idx_model]['path'][$index_path] = $row[$field_name];
