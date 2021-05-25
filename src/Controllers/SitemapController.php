@@ -15,7 +15,7 @@ class SitemapController extends Controller
 
         $array_response = [];
         foreach ($sitemap as $prefix => $value) {
-            if (!$is_use_blog_module) {
+            if (! $is_use_blog_module) {
                 if ($prefix == 'badaso-blog') {
                     continue;
                 }
