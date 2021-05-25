@@ -11,7 +11,7 @@ class SitemapController extends Controller
     public function get()
     {
         $sitemap = config('badaso-sitemap.sitemap');
-        $is_use_blog_module = in_array('badaso-content-module', explode(',', env('MIX_BADASO_PLUGINS')));
+        $is_use_blog_module = in_array('badaso-content-module', explode(',', env('MIX_BADASO_MODULES')));
 
         $array_response = [];
         foreach ($sitemap as $prefix => $value) {

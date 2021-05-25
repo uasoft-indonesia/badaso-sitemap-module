@@ -7,7 +7,7 @@
 ```
 MIX_DEFAULT_MENU=admin
 MIX_BADASO_MENU=${MIX_DEFAULT_MENU},badaso-sitemap-module
-MIX_BADASO_PLUGINS=badaso-sitemap-module
+MIX_BADASO_MODULES=badaso-sitemap-module
 ```
 4. Call command `php artisan badaso-sitemap:setup`
 5. Call command `php artisan serve`
