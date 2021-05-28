@@ -56,25 +56,25 @@ class WebAccessHandle
 
                 $pages[0] = [
                     'offset' => 0,
-                    'limit' => $max_pages,
+                    'limit'  => $max_pages,
                 ];
 
-                for ($i = 1; $i < $num_pages; ++$i) {
+                for ($i = 1; $i < $num_pages; $i++) {
                     $offset = $pages[intval($i - 1)]['offset'] + ($max_pages);
                     $limit = $i != $num_pages - 1 ? $max_pages : $count_available_list - $offset;
                     $pages[$i] = [
                         'offset' => $offset,
-                        'limit' => $limit,
+                        'limit'  => $limit,
                     ];
                 }
 
                 $explode_path_url[$index] = [
-                    'sub_url' => $sub_url,
-                    'available_list' => $available_list,
+                    'sub_url'              => $sub_url,
+                    'available_list'       => $available_list,
                     'count_available_list' => $count_available_list,
-                    'num_pages' => $num_pages,
-                    'pages' => $pages,
-                    'field_name' => $field_name,
+                    'num_pages'            => $num_pages,
+                    'pages'                => $pages,
+                    'field_name'           => $field_name,
                 ];
             }
         }
@@ -120,7 +120,7 @@ class WebAccessHandle
                     $row = (array) $row;
                     foreach ($this->attribute_sub_url as $sub_index_path => $sub_explode_path_url) {
                         if (is_array($sub_explode_path_url)) {
-                            if (!array_key_exists($field_name, $row)) {
+                            if (! array_key_exists($field_name, $row)) {
                                 $field_name = explode('.', $field_name)[1];
                             }
                             $generate_page_url[$idx_model]['path'][$index_path] = $row[$field_name];
@@ -138,7 +138,7 @@ class WebAccessHandle
             $path = join('/', $page_url['path']);
             $loc_url = url($path);
             $new_generate_page_array_xml_format[$loc_url] = [
-                'loc' => $loc_url,
+                'loc'     => $loc_url,
                 'lastmod' => $page_url['lastmod'],
             ];
         }

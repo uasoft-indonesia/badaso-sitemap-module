@@ -2,10 +2,10 @@
 
 return [
     'max_content_paginate' => 500,
-    'prefix' => '/',
-    'sitemap' => [
+    'prefix'               => '/',
+    'sitemap'              => [
         'badaso-blog' => [
-            'table' => 'posts',
+            'table'      => 'posts',
             'web-access' => [
                 'url' => env('MIX_BLOG_POST_URL_PREFIX').'/:slug',
             ],
@@ -23,13 +23,13 @@ return [
     'custom_sitemap' => [
         // root
         // 'root' => [
-            // urls
-            // '/' => [
-            //     'lastmod' => Carbon\Carbon::now()->toIsoString(),
-            // ],
-            // '/other' => [
-            //     'lastmod' => Carbon\Carbon::now()->toIsoString(),
-            // ],
+        // urls
+        // '/' => [
+        //     'lastmod' => Carbon\Carbon::now()->toIsoString(),
+        // ],
+        // '/other' => [
+        //     'lastmod' => Carbon\Carbon::now()->toIsoString(),
+        // ],
         // ],
     ],
 ];
