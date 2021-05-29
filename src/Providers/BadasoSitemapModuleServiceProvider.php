@@ -5,13 +5,11 @@ namespace Uasoft\Badaso\Module\Sitemap\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Uasoft\Badaso\Middleware\ApiRequest;
 use Uasoft\Badaso\Module\Sitemap\BadasoSitemapModule;
 use Uasoft\Badaso\Module\Sitemap\Commands\BadasoSitemapSetup;
 use Uasoft\Badaso\Module\Sitemap\Facades\BadasoSitemapModule as FacadesBadasoSitemapModule;
-use Uasoft\Badaso\Module\Sitemap\Middleware\CaptureRequestMiddleware;
 
-class BadasoModuleSitemapServiceProvider extends ServiceProvider
+class BadasoSitemapModuleServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -24,7 +22,6 @@ class BadasoModuleSitemapServiceProvider extends ServiceProvider
         $loader->alias('BadasoSitemapModule', FacadesBadasoSitemapModule::class);
 
         $router = $this->app->make(Router::class);
-        $router->pushMiddlewareToGroup(ApiRequest::class, CaptureRequestMiddleware::class);
 
         $this->app->singleton('badaso-sitemap-module', function () {
             return new BadasoSitemapModule();
