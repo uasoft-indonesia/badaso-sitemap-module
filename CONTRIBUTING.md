@@ -48,15 +48,15 @@ After getting the license, you can proceed to Badaso installation.
 - Root Laravel Project
   - /packages (Folder Packages)
     - /uasoft-indonesia (Folder Uasoft Indonesia)
-      - badaso (Badaso Library) 
-      - badaso-sitemap-module (Cloud Badaso Sitemap Module)
+      - core (Badaso Core Library) 
+      - sitemap-module (Cloud Badaso Sitemap Module)
     - ...
   - ...
 - ...
 
 cd into uasoft-indonesia directory, then run
 ```
-git clone https://github.com/uasoft-indonesia/badaso-sitemap-module.git
+git clone https://github.com/uasoft-indonesia/badaso-sitemap-module.git sitemap-module
 ```
 
 2. Add the following Badaso provider to ```/config/app.php```.
@@ -74,14 +74,14 @@ git clone https://github.com/uasoft-indonesia/badaso-sitemap-module.git
 "autoload": {
     "psr-4": {
         "App\\": "app/",
-        "Uasoft\\Badaso\\": "packages/uasoft-indonesia/badaso/src/",
-        "Uasoft\\Badaso\\Module\\Sitemap\\": "packages/uasoft-indonesia/badaso-sitemap-module/src/",
+        "Uasoft\\Badaso\\": "packages/badaso/core/src/",
+        "Uasoft\\Badaso\\Module\\Sitemap\\": "packages/badaso/sitemap-module/src/",
     },
     ...
 }
 ```
 
-5. Copy required library from ```packages/uasoft-indonesia/badaso-sitemap-module/composer.json``` to ```/composer.json``` then ```composer install```
+5. Copy required library from ```packages/badaso/sitemap-module/composer.json``` to ```/composer.json``` then ```composer install```
 
 7. Run the following commands to update dependencies in package.json
 ```
