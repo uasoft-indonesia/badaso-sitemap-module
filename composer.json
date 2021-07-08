@@ -1,6 +1,6 @@
 {
   "version": "2.0.0-rc",
-  "name": "uasoft-indonesia/badaso-sitemap-module",
+  "name": "badaso/sitemap-module",
   "description": "Zero development for blog system on badaso",
   "keywords": [
     "laravel",
