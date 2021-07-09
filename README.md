@@ -1,13 +1,13 @@
 # badaso-sitemap-module
 ## Installation
 1. <a href="https://badaso-docs.uatech.co.id/docs/en/getting-started/installation/" target="blank"> Install Badaso </a> from laravel project
-2. Install badaso content module `composer require uasoft-indonesia/badaso-sitemap-module` 
+2. Install badaso content module `composer require badaso/core` 
 3. Set env
 
 ```
 MIX_DEFAULT_MENU=admin
-MIX_BADASO_MENU=${MIX_DEFAULT_MENU},badaso-sitemap-module
-MIX_BADASO_MODULES=badaso-sitemap-module
+MIX_BADASO_MENU=${MIX_DEFAULT_MENU},sitemap-module
+MIX_BADASO_MODULES=sitemap-module
 ```
 4. Call command `php artisan badaso-sitemap:setup`
 5. Run the laravel project and call url `http://your-laravel-host/sitemap.xml`
