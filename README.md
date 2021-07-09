@@ -1,4 +1,5 @@
-# badaso-sitemap-module
+# badaso/sitemap-module
+
 ## Installation
 1. <a href="https://badaso-docs.uatech.co.id/docs/en/getting-started/installation/" target="blank"> Install Badaso </a> from laravel project
 2. Install badaso content module `composer require badaso/core` 
