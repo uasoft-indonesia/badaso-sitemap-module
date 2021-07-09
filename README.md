@@ -2,7 +2,7 @@
 
 ## Installation
 1. <a href="https://badaso-docs.uatech.co.id/docs/en/getting-started/installation/" target="blank"> Install Badaso </a> from laravel project
-2. Install badaso content module `composer require badaso/core` 
+2. Install badaso sitemap module `composer require badaso/sitemap-module` 
 3. Set env
 
 ```
