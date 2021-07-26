@@ -2,21 +2,21 @@
 
 return [
     'max_content_paginate' => 500,
-    'prefix'               => '/',
-    'sitemap'              => [
-        'badaso-blog' => [
-            'table'      => 'posts',
+    'prefix' => '/',
+    'sitemap' => [
+        'badaso-post' => [
+            'table' => config('badaso.database.prefix').'posts',
             'web-access' => [
-                'url' => env('MIX_BLOG_POST_URL_PREFIX').'/:slug',
+                'url' => env('MIX_POST_URL_PREFIX').'/:slug',
             ],
             // 'web-access' => [
-            //     'url' => env('MIX_BLOG_POST_URL_PREFIX').'/:slug/:posts.category_id,categories.id,categories.title/:posts.category_id,categories.id,categories.slug',
+            //     'url' => env('MIX_POST_URL_PREFIX').'/:slug/:posts.category_id,categories.id,categories.title/:posts.category_id,categories.id,categories.slug',
             // ],
         ],
         // 'user' => [
         //     'table' => 'users',
         //     'web-access' => [
-        //         'url' => env('MIX_BLOG_POST_URL_PREFIX').'/:email',
+        //         'url' => '/users/:email',
         //     ],
         // ],
     ],
