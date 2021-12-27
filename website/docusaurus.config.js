@@ -7,14 +7,14 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Badaso Sitemap Module Documentation",
-  tagline: "Badaso Sitemap module official documentation",
-  url: "https://your-docusaurus-test-site.com",
+  tagline: "Badaso sitemap module official documentation",
+  url: "https://badaso-sitemap.uatech.co.id",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "uasoft-indonesia", // Usually your GitHub org/user name.
-  projectName: "badaso-sitemap-module-docs", // Usually your repo name.
+  projectName: "badaso-sitemap-module", // Usually your repo name.
   trailingSlash: false,
 
   i18n: {
@@ -30,14 +30,14 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/facebook/docusaurus/edit/main/website/",
+          editUrl: "https://github.com/uasoft-indonesia/badaso-sitemap-module/edit/main/website/",
           routeBasePath: "/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            "https://github.com/facebook/docusaurus/edit/main/website/blog/",
+            "https://github.com/uasoft-indonesia/badaso-sitemap-module/edit/main/website/blog",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -50,9 +50,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Badaso Sitemap Module",
+        title: "Badaso sitemap module",
         logo: {
-          alt: "Badaso Sitemap Module Logo",
+          alt: "Badaso sitemap module Logo",
           src: "img/badaso-module-logo.png",
         },
         items: [
@@ -69,7 +69,7 @@ const config = {
           },
 
           {
-            href: "https://github.com/uasoft-indonesia/badaso-commerce-module",
+            href: "https://github.com/uasoft-indonesia/badaso-sitemap-module",
             label: "GitHub",
             position: "right",
           },
