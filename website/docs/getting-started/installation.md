@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Installation
 
-1. Install [Badaso](https://badaso-docs.uatech.co.id/docs/en/getting-started/installation/) from laravel project
+1. Install [Badaso](https://badaso-docs.uatech.co.id/getting-started/installation) from laravel project
 2. Install badaso sitemap module
 ```
 composer require badaso/sitemap-module
