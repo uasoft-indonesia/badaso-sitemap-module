@@ -76,12 +76,20 @@ class BadasoSiteMapTest extends TestCase
                 $lastmodarr = [];
 
                 $postDB = DB::table($value[1]['table'])->get();
-                dd(count((array)$xml), (array)$xml);
+                
                 foreach ($xml as $key => $value) {
+                    if(count((array) $xml) > 1){
                     $loc = ((array) $value->loc)[0];
                     $lastmod = ((array) $value->lastmod)[0];
                     $sitemaparr[] = $loc;
                     $lastmodarr[] = $lastmod;
+                    }else{
+                    $loc = ((array) $value->loc)[0];
+                    $lastmod = ((array) $value->lastmod);
+                    $sitemaparr[] = $loc;
+                    $lastmodarr[] = $lastmod;
+                    }
+                    
                 }
 
                 $sitemap = collect($sitemaparr);
