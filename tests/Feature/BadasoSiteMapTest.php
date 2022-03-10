@@ -15,7 +15,6 @@ class BadasoSiteMapTest extends TestCase
 
             $response = ($response->getContent());
 
-            $response = file_get_contents(env('APP_URL').'/sitemap.xml');
             $xml = simplexml_load_string($response);
 
             $sitemap = [];
