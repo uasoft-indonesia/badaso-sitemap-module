@@ -97,7 +97,7 @@ class BadasoSiteMapTest extends TestCase
 
                 foreach ($postDB as $key => $value) {
                     $loc = env('APP_URL')."$path".$value->$slug;
-                    dd($loc);
+                   
                     $last = substr(str_replace('T', ' ', $value->created_at), 0, 19);
 
                     $sitemap_data = $sitemap->first(function ($item) use ($loc) {
@@ -111,9 +111,8 @@ class BadasoSiteMapTest extends TestCase
                     });
                     
                     $this->assertNotEmpty($sitemap_data);
-                    
+                  dd($loc,$last,$sitemap_data,$lastmod_data);   
                 }
-                $this->assertNotEmpty($lastmod_data);
             }
         }
     }
