@@ -54,6 +54,7 @@ class BadasoSiteMapTest extends TestCase
     public function test_check_same_data_sitemap()
     {
         if (strpos(env('MIX_BADASO_MODULES'), 'post-module') == 0) {
+            dd("ASD");
             $temp = config('badaso-sitemap.sitemap');
             $keySitemap = [];
 
