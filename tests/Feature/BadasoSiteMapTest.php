@@ -74,7 +74,7 @@ class BadasoSiteMapTest extends TestCase
                 $xml = simplexml_load_string($response);
                 $sitemaparr = [];
                 $lastmodarr = [];
-                $postDB = DB::table($value[1]['table'])->get();
+                $postDB = DB::table("$value[1]['table']")->get();
                 dd($value[1]['table'],$postDB);
                 
                 foreach ($xml as $key => $value) {
