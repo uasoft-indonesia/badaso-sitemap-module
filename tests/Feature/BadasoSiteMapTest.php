@@ -76,7 +76,8 @@ class BadasoSiteMapTest extends TestCase
                 $lastmodarr = [];
 
                 $postDB = DB::table($value[1]['table'])->get();
-
+                
+                dd($xml);
                 foreach ($xml as $key => $value) {
                     $loc = ((array) $value->loc)[0];
                     $lastmod = ((array) $value->lastmod)[0];
