@@ -68,16 +68,15 @@ class BadasoSiteMapTest extends TestCase
 
                 $path = str_replace("$nonslug", '/', $data);
 
-                 $response = $this->get("/$value[0]/sitemap.xml");
+                $response = $this->get("/$value[0]/sitemap.xml");
 
-                 $response = ($response->getContent());
+                $response = ($response->getContent());
                 $xml = simplexml_load_string($response);
                 $sitemaparr = [];
                 $lastmodarr = [];
 
                 $postDB = DB::table($value[1]['table'])->get();
-                
-                dd($xml);
+                dd(count((array)$xml), (array)$xml);
                 foreach ($xml as $key => $value) {
                     $loc = ((array) $value->loc)[0];
                     $lastmod = ((array) $value->lastmod)[0];
