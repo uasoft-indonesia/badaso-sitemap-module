@@ -85,6 +85,7 @@ class BadasoSiteMapTest extends TestCase
 
         $tableCategory = Category::latest()->first();
         $count = 5;
+
         for ($i = 0; $i < $count; $i++) {
             $request_data = [
                 'title' => Str::random(40),
@@ -141,7 +142,6 @@ class BadasoSiteMapTest extends TestCase
                     }
                     
                 }
-
                 $sitemap = collect($sitemaparr);
                 $lastmod = collect($lastmodarr);
                
