@@ -36,7 +36,9 @@ class BadasoSiteMapTest extends TestCase
                 $keySitemap[] = env('APP_URL')."/$key".'/sitemap.xml';
             }
 
-            $response = file_get_contents(env('APP_URL').'/sitemap.xml');
+             $response = $this->get("/sitemap.xml");
+
+            $response = ($response->getContent());
             $xml = simplexml_load_string($response);
 
             $sitemap = [];
@@ -66,7 +68,9 @@ class BadasoSiteMapTest extends TestCase
 
                 $path = str_replace("$nonslug", '/', $data);
 
-                $response = file_get_contents(env('APP_URL')."/$value[0]/sitemap.xml");
+                 $response = $this->get("/$value[0]/sitemap.xml");
+
+                 $response = ($response->getContent());
                 $xml = simplexml_load_string($response);
                 $sitemaparr = [];
                 $lastmodarr = [];
