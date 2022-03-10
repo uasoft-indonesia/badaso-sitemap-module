@@ -104,7 +104,7 @@ class BadasoSiteMapTest extends TestCase
                         return $item == $loc;
                     });
 
-                    $lastmod_data = $lastmod->first(function ($items) use ($last) {
+                    $lastmod_data[] = $lastmod->first(function ($items) use ($last) {
                         $item = substr(str_replace('T', ' ', $items), 0, 19);
 
                         return $item == $last;
