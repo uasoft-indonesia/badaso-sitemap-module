@@ -13,12 +13,12 @@ return [
             //     'url' => env('MIX_POST_URL_PREFIX').'/:slug/:posts.category_id,categories.id,categories.title/:posts.category_id,categories.id,categories.slug',
             // ],
         ],
-        'user' => [
-            'table' => 'users',
-            'web-access' => [
-                'url' => '/users/:email',
-            ],
-        ],
+        // 'user' => [
+        //     'table' => 'users',
+        //     'web-access' => [
+        //         'url' => '/users/:email',
+        //     ],
+        // ],
     ],
     'custom_sitemap' => [
         // root
