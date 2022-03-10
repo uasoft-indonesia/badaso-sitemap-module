@@ -1,6 +1,6 @@
 <?php
 
-namespace Uasoft\Badaso\Module\Content\Tests\Unit;
+namespace Uasoft\Badaso\Module\Sitemap\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
