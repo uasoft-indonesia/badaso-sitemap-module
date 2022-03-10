@@ -87,7 +87,7 @@ jobs:
       - name: Mysql | Laravel setup
         run: cd laravel &&
           php artisan badaso:setup --force &&
-          php artisan badaso-post:setup --force &&
+          php artisan badaso-post:setup &&
           php artisan badaso-sitemap:setup &&
           php artisan badaso-sitemap-test:setup  &&
           php artisan db:wipe &&
@@ -114,7 +114,7 @@ jobs:
       - name: Sqlite | Laravel setup
         run: cd laravel &&
           php artisan badaso:setup --force &&
-          php artisan badaso-post:setup --force &&
+          php artisan badaso-post:setup  &&
           php artisan badaso-sitemap:setup &&
           php artisan badaso-sitemap-test:setup  &&
           php artisan db:wipe &&
@@ -140,7 +140,7 @@ jobs:
       - name: Pgsql | Laravel setup
         run: cd laravel &&
           php artisan badaso:setup --force &&
-          php artisan badaso-post:setup --force &&
+          php artisan badaso-post:setup  &&
           php artisan badaso-sitemap:setup &&
           php artisan badaso-sitemap-test:setup  &&
           php artisan db:wipe &&
