@@ -79,6 +79,7 @@ class BadasoSiteMapTest extends TestCase
 
                 foreach ($xml as $key => $value) {
                     $loc = ((array) $value->loc)[0];
+                    dd($loc);
                     $lastmod = ((array) $value->lastmod)[0];
                     $sitemaparr[] = $loc;
                     $lastmodarr[] = $lastmod;
