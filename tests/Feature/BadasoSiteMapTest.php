@@ -74,7 +74,7 @@ class BadasoSiteMapTest extends TestCase
                 $xml = simplexml_load_string($response);
                 $sitemaparr = [];
                 $lastmodarr = [];
-
+                dd($value);
                 $postDB = DB::table($value[1]['table'])->get();
                 
                 foreach ($xml as $key => $value) {
@@ -89,11 +89,12 @@ class BadasoSiteMapTest extends TestCase
                     $sitemaparr[] = $loc;
                     $lastmodarr[] = $lastmod;
                     }
+                    
                 }
 
                 $sitemap = collect($sitemaparr);
                 $lastmod = collect($lastmodarr);
-                dd($postDB);
+               
                 foreach ($postDB as $key => $value) {
                     $loc = env('APP_URL')."$path".$value->$slug;
                         
@@ -109,10 +110,10 @@ class BadasoSiteMapTest extends TestCase
                         return $item == $last;
                     });
                     
-                    $this->assertTrue($sitemap_data);
+                    $this->assertNotEmpty($sitemap_data);
                     
-                    $this->assertTrue($lastmod_data);
                 }
+                $this->assertNotEmpty($lastmod_data);
             }
         }
     }
