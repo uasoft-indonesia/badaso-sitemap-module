@@ -1,6 +1,6 @@
 <?php
 
-namespace Uasoft\Badaso\Module\Sitemap\Tests\UnitFeature;
+namespace Uasoft\Badaso\Module\Sitemap\Tests\Feature;
 
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
@@ -10,6 +10,11 @@ class BadasoSiteMapTest extends TestCase
     public function test_count_sitemap()
     {
         if (strpos(env('MIX_BADASO_MODULES'), 'post-module') == 0) {
+
+            $response = $this->get("/sitemap.xml");
+
+            $response = ($response->getContent());
+
             $response = file_get_contents(env('APP_URL').'/sitemap.xml');
             $xml = simplexml_load_string($response);
 
