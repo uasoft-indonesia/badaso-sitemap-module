@@ -110,7 +110,7 @@ class BadasoSiteMapTest extends TestCase
                         return $item == $last;
                     });
                     
-                    $this->assertNotEmpty($sitemap_data);
+                    $this->assertTrue($sitemap_data > 0);
                   dd($loc,$last,$sitemap_data,$lastmod_data);   
                 }
             }

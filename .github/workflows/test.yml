@@ -95,6 +95,7 @@ jobs:
           php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" &&
           php artisan db:seed --class="Database\Seeders\Badaso\Post\BadasoPostModuleSeeder" &&
           sed -i 's/MIX_BADASO_MENU=${MIX_DEFAULT_MENU}/MIX_BADASO_MENU=${MIX_DEFAULT_MENU},post-module,sitemap-module/g' .env &&
+          sed -i 's/APP_URL=localhost/APP_URL=localhost/g' .env &&
           echo -e "\nMIX_POST_URL_PREFIX=/post" >> .env &&
           echo -e "\nMIX_BADASO_MODULES=post-module,sitemap-module" >> .env 
 
@@ -120,7 +121,7 @@ jobs:
           php artisan db:wipe &&
           php artisan migrate &&
           php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" &&
-          php artisan db:seed --class="Database\Seeders\Badaso\Post\BadasoPostModuleSeeder" &&
+          php artisan db:seed --class="Database\Seeders\Badaso\Post\BadasoPostModuleSeeder" 
 
       # Sqlite | Badaso Post Module test
       - name: Sqlite | Badaso Post Module test
@@ -146,7 +147,7 @@ jobs:
           php artisan db:wipe &&
           php artisan migrate &&
           php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" &&
-          php artisan db:seed --class="Database\Seeders\Badaso\Post\BadasoPostModuleSeeder" &&
+          php artisan db:seed --class="Database\Seeders\Badaso\Post\BadasoPostModuleSeeder" 
           
       # Pgsql | Badaso Post Module test
       - name: Pgsql | Badaso Post Module test
