@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Uasoft\Badaso\Module\Sitemap\Tests\Feature;
 
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
