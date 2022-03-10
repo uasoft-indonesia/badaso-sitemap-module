@@ -94,24 +94,26 @@ class BadasoSiteMapTest extends TestCase
 
                 $sitemap = collect($sitemaparr);
                 $lastmod = collect($lastmodarr);
-                $lastmod_data = [];
+
                 foreach ($postDB as $key => $value) {
                     $loc = env('APP_URL')."$path".$value->$slug;
-
+                    dd($loc);
                     $last = substr(str_replace('T', ' ', $value->created_at), 0, 19);
 
                     $sitemap_data = $sitemap->first(function ($item) use ($loc) {
                         return $item == $loc;
                     });
 
-                    $lastmod_data[] = $lastmod->first(function ($items) use ($last) {
+                    $lastmod_data = $lastmod->first(function ($items) use ($last) {
                         $item = substr(str_replace('T', ' ', $items), 0, 19);
 
                         return $item == $last;
                     });
+                    
                     $this->assertNotEmpty($sitemap_data);
                     
                 }
+                $this->assertNotEmpty($lastmod_data);
             }
         }
     }
