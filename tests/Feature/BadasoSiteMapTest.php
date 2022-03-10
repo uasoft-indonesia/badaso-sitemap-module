@@ -156,8 +156,7 @@ class BadasoSiteMapTest extends TestCase
                     });
 
                     $lastmod_data = $lastmod->first(function ($items) use ($last) {
-                        dd($items,$last);
-                        $item = substr(str_replace('T', ' ', $items), 0, 19);
+                        $item = substr(str_replace('T', ' ', $items[0]), 0, 19);
 
                         return $item == $last;
                     });
