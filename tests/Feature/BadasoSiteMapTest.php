@@ -89,15 +89,13 @@ class BadasoSiteMapTest extends TestCase
                     $sitemaparr[] = $loc;
                     $lastmodarr[] = $lastmod;
                     }
-                    
                 }
 
                 $sitemap = collect($sitemaparr);
                 $lastmod = collect($lastmodarr);
-               
+                dd($postDB);
                 foreach ($postDB as $key => $value) {
                     $loc = env('APP_URL')."$path".$value->$slug;
-                    dd($loc);
                         
                     $last = substr(str_replace('T', ' ', $value->created_at), 0, 19);
 
