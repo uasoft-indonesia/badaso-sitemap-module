@@ -94,7 +94,7 @@ class BadasoSiteMapTest extends TestCase
 
                 $sitemap = collect($sitemaparr);
                 $lastmod = collect($lastmodarr);
-
+                $lastmod_data = [];
                 foreach ($postDB as $key => $value) {
                     $loc = env('APP_URL')."$path".$value->$slug;
 
@@ -112,6 +112,7 @@ class BadasoSiteMapTest extends TestCase
                     $this->assertNotEmpty($sitemap_data);
                     
                 }
+                dd($lastmod_data);
                 $this->assertTrue($lastmod_data > 1);
             }
         }
