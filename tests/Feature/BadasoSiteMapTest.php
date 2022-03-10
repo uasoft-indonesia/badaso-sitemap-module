@@ -74,8 +74,10 @@ class BadasoSiteMapTest extends TestCase
                 $xml = simplexml_load_string($response);
                 $sitemaparr = [];
                 $lastmodarr = [];
+                $tables = DB::select('SHOW TABLES');
+
                 $postDB = DB::table("users")->get();
-                dd($value[1]['table'],$postDB);
+                dd($value[1]['table'],$postDB,$tables);
                 
                 foreach ($xml as $key => $value) {
                     if(count((array) $xml) > 1){
