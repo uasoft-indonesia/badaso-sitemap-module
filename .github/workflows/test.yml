@@ -91,7 +91,6 @@ jobs:
           php artisan db:wipe &&
           php artisan migrate &&
           php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" &&
-          php artisan db:seed --class="Database\Seeders\Badaso\Sitemap\BadasoSitemapModuleSeeder" &&
           sed -i 's/MIX_BADASO_MENU=${MIX_DEFAULT_MENU}/MIX_BADASO_MENU=${MIX_DEFAULT_MENU},sitemap-module/g' .env &&
           echo -e "\nMIX_BADASO_MODULES=sitemap-module" >> .env 
 
@@ -115,8 +114,7 @@ jobs:
           php artisan badaso-sitemap-test:setup  &&
           php artisan db:wipe &&
           php artisan migrate &&
-          php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" &&
-          php artisan db:seed --class="Database\Seeders\Badaso\Sitemap\BadasoSitemapModuleSeeder" &&
+          php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" 
 
       # Sqlite | Badaso Post Module test
       - name: Sqlite | Badaso Post Module test
@@ -140,8 +138,7 @@ jobs:
           php artisan badaso-sitemap-test:setup  &&
           php artisan db:wipe &&
           php artisan migrate &&
-          php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" &&
-          php artisan db:seed --class="Database\Seeders\Badaso\Sitemap\BadasoSitemapModuleSeeder" &&
+          php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder" 
           
       # Pgsql | Badaso Post Module test
       - name: Pgsql | Badaso Post Module test
