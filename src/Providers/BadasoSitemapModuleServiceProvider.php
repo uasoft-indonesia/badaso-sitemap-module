@@ -5,7 +5,6 @@ namespace Uasoft\Badaso\Module\Sitemap\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Tests\Feature\BadasoSiteMapTest;
 use Uasoft\Badaso\Module\Sitemap\BadasoSitemapModule;
 use Uasoft\Badaso\Module\Sitemap\Commands\BadasoSitemapSetup;
 use Uasoft\Badaso\Module\Sitemap\Commands\BadasoSitemapTestSetup;
