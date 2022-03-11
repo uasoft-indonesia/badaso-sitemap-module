@@ -15,8 +15,7 @@ class BadasoSiteMapTest extends TestCase
     public function test_count_sitemap()
     {
         if (strpos(env('MIX_BADASO_MODULES'), 'post-module') == 0) {
-
-            $response = $this->get("/sitemap.xml");
+            $response = $this->get('/sitemap.xml');
 
             $response = ($response->getContent());
 
@@ -41,7 +40,7 @@ class BadasoSiteMapTest extends TestCase
                 $keySitemap[] = env('APP_URL')."/$key".'/sitemap.xml';
             }
 
-             $response = $this->get("/sitemap.xml");
+            $response = $this->get('/sitemap.xml');
 
             $response = ($response->getContent());
             $xml = simplexml_load_string($response);
@@ -127,28 +126,27 @@ class BadasoSiteMapTest extends TestCase
                 $sitemaparr = [];
                 $lastmodarr = [];
                 $postDB = DB::table($value[1]['table'])->get();
-                
+
                 foreach ($xml as $key => $value) {
-                    if(count((array) $xml) > 1){
-                    $loc = ((array) $value->loc)[0];
-                    $lastmod = ((array) $value->lastmod)[0];
-                    $sitemaparr[] = $loc;
-                    $lastmodarr[] = $lastmod;
-                    }else{
-                    $loc = ((array) $value->loc)[0];
-                    $lastmod = ((array) $value->lastmod);
-                    $sitemaparr[] = $loc;
-                    $lastmodarr[] = $lastmod;
+                    if (count((array) $xml) > 1) {
+                        $loc = ((array) $value->loc)[0];
+                        $lastmod = ((array) $value->lastmod)[0];
+                        $sitemaparr[] = $loc;
+                        $lastmodarr[] = $lastmod;
+                    } else {
+                        $loc = ((array) $value->loc)[0];
+                        $lastmod = ((array) $value->lastmod);
+                        $sitemaparr[] = $loc;
+                        $lastmodarr[] = $lastmod;
                     }
-                    
                 }
-                
+
                 $sitemap = collect($sitemaparr);
                 $lastmod = collect($lastmodarr);
-               
+
                 foreach ($postDB as $key => $value) {
                     $loc = env('APP_URL')."$path".$value->$slug;
-                        
+
                     $last = substr(str_replace('T', ' ', $value->created_at), 0, 19);
 
                     $sitemap_data = $sitemap->first(function ($item) use ($loc) {
@@ -160,9 +158,8 @@ class BadasoSiteMapTest extends TestCase
 
                         return $item == $last;
                     });
-                    
+
                     $this->assertNotEmpty($sitemap_data);
-                    
                 }
                 $this->assertNotEmpty($lastmod_data);
             }
