@@ -152,7 +152,6 @@ class BadasoSiteMapTest extends TestCase
                     $sitemap_data = $sitemap->first(function ($item) use ($loc) {
                         return $item == $loc;
                     });
-
                     $lastmod_data = $lastmod->first(function ($items) use ($last) {
                         $item = substr(str_replace('T', ' ', $items[0]), 0, 19);
 
