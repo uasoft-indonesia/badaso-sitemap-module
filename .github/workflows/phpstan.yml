@@ -63,6 +63,8 @@ jobs:
       - name: Badaso SitemapModule test PHPStan
         run: cd laravel &&
              ./vendor/bin/phpstan analyse -c vendor/badaso/sitemap-module/phpstan.neon.dist
+             
+             
 
 
 
