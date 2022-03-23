@@ -50,6 +50,7 @@ jobs:
         run: git branch &&
           cd laravel &&
           composer require badaso/core:dev-task/v2/var-exporter-support &&
+          composer require badaso/post-module:dev-task/phpstan-post-module &&
           composer require badaso/sitemap-module:dev-${GITHUB_HEAD_REF} -W &&
           composer update --no-interaction
 
