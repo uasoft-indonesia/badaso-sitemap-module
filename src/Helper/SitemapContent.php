@@ -74,7 +74,7 @@ class SitemapContent
         return $this;
     }
 
-    public static function load($storage_sitemap_path, $directory = 'sitemap',  $is_sitemap_group = false)
+    public static function load($storage_sitemap_path, $directory = 'sitemap', $is_sitemap_group = false)
     {
         $sitemap_XML = new self($directory, $is_sitemap_group);
         $sitemap_XML = $sitemap_XML->loadContentSitemapJSONFormat($storage_sitemap_path);
