@@ -3,6 +3,6 @@ includes:
 
 parameters:
     paths:
-        - packages/badaso/sitemap-module/src
-        - packages/badaso/sitemap-module/tests
+        - src
+        - tests
     level: 1
