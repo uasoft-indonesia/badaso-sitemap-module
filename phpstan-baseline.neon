@@ -1,7 +1,9 @@
 parameters:
-    ignoreErrors:
-    - '#Call to an undefined static method Uasoft\\Badaso\\Module\\Post\\Models\\[a-zA-Z0-9-()\_]+::[a-zA-Z0-9-()\_]+.#'
-    - '#Method Uasoft\\Badaso\\Module\\Sitemap\\Commands\\[a-zA-Z0-9-()\_]+::[a-zA-Z0-9-()\_]+ should return int but return statement is missing+.#'
-    - '#Call to static method [a-zA-Z0-9-()\_]+ on an unknown class Route+.#'
-
-
+    excludePaths:
+    - src/Commands/*.php
+    - src/Config/badaso-sitemap.php
+    - src/Helper/*.php
+    - src/Controllers/SitemapController.php
+    - src/Facades/BadasoSitemapModule.php
+    - src/Providers/BadasoSitemapModuleServiceProvider.php
+    - src/Routes/web.php

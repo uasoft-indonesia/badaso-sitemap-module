@@ -42,5 +42,8 @@
         "Uasoft\\Badaso\\Module\\Sitemap\\Providers\\BadasoSitemapModuleServiceProvider"
       ]
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.4"
   }
 }
