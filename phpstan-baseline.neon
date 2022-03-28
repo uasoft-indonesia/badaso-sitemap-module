@@ -1,9 +1,2 @@
 parameters:
-    excludePaths:
-    - src/Commands/*.php
-    - src/Config/badaso-sitemap.php
-    - src/Helper/*.php
-    - src/Controllers/SitemapController.php
-    - src/Facades/BadasoSitemapModule.php
-    - src/Providers/BadasoSitemapModuleServiceProvider.php
-    - src/Routes/web.php
+

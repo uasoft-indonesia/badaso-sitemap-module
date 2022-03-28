@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 $api_route_prefix = config('badaso-sitemap.prefix');
 
 Route::group(
