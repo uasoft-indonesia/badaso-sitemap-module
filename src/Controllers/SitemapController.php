@@ -2,7 +2,7 @@
 
 namespace Uasoft\Badaso\Module\Sitemap\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Uasoft\Badaso\Module\Sitemap\Helper\SitemapXMLFormat;
 use Uasoft\Badaso\Module\Sitemap\Helper\WebAccessHandle;
 
