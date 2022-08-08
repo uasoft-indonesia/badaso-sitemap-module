@@ -14,7 +14,7 @@ class BadasoSiteMapTest extends TestCase
 {
     public function test_count_sitemap()
     {
-        if (strpos(env('MIX_BADASO_MODULES'), 'post-module') == 0) {
+        if (strpos(env('MIX_BADASO_PLUGINS'), 'post-module') == 0) {
             $response = $this->get('/sitemap.xml');
 
             $response = ($response->getContent());
@@ -32,7 +32,7 @@ class BadasoSiteMapTest extends TestCase
 
     public function test_check_same_group_sitemap()
     {
-        if (strpos(env('MIX_BADASO_MODULES'), 'post-module') == 0) {
+        if (strpos(env('MIX_BADASO_PLUGINS'), 'post-module') == 0) {
             $data = config('badaso-sitemap.sitemap');
             $keySitemap = [];
 
@@ -104,7 +104,7 @@ class BadasoSiteMapTest extends TestCase
             $response->assertSuccessful();
         }
 
-        if (strpos(env('MIX_BADASO_MODULES'), 'post-module') == 0) {
+        if (strpos(env('MIX_BADASO_PLUGINS'), 'post-module') == 0) {
             $temp = config('badaso-sitemap.sitemap');
             $keySitemap = [];
 

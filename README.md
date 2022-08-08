@@ -8,7 +8,7 @@
 ```
 MIX_DEFAULT_MENU=admin
 MIX_BADASO_MENU=${MIX_DEFAULT_MENU},sitemap-module
-MIX_BADASO_MODULES=sitemap-module
+MIX_BADASO_PLUGINS=sitemap-module
 ```
 4. Call command `php artisan badaso-sitemap:setup`
 5. Run the laravel project and call url `http://your-laravel-host/sitemap.xml`
