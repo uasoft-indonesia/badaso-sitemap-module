@@ -114,7 +114,7 @@ class BadasoSiteMapTest extends TestCase
 
             foreach ($keySitemap as $key => $value) {
                 $data = config('badaso-sitemap.sitemap')[$value[0]]['web-access']['url'];
-                $nonslug = substr($data, strpos($data, '/:'), );
+                $nonslug = substr($data, strpos($data, '/:'));
                 $slug = str_replace('/:', '', $nonslug);
 
                 $path = str_replace("$nonslug", '/', $data);
