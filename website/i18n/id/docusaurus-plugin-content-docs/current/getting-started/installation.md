@@ -14,7 +14,7 @@ composer require badaso/sitemap-module
 ```
 MIX_DEFAULT_MENU=admin
 MIX_BADASO_MENU=${MIX_DEFAULT_MENU},sitemap-module
-MIX_BADASO_MODULES=sitemap-module
+MIX_BADASO_PLUGINS=sitemap-module
 ```
 4. Penggil perintah pada terminal 
 ```
