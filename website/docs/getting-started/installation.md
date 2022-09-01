@@ -12,9 +12,10 @@ sidebar_position: 1
     ```
     MIX_BADASO_MENU=${MIX_DEFAULT_MENU},sitemap-module
     MIX_BADASO_PLUGINS=sitemap-module
+    MIX_BADASO_POST_URL_PREFIX="change-with-your-theme-prefix"
     ```
 1. Setup the sitemap module 
     ```
     php artisan badaso-sitemap:setup
     ```
-1. Your sitemap is ready.
+1. Your sitemap is ready, you can access the sitemap `/sitemap.xml`
